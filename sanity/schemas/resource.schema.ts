@@ -50,7 +50,7 @@ const schema = {
       type: 'string',
       validation: (Rule: any) => Rule.required(),
       options: {
-        list: ['living-room', 'dinning-area', 'master-bedroom', 'parking-area', 'Kitchen']
+        list: ['living-room', 'dinning-area', 'master-bedroom', 'parking-area', 'kitchen', 'guest bedroom']
       }
     }
   ]
