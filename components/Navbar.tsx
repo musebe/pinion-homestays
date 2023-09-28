@@ -13,6 +13,11 @@ type LinkType = {
 const Navbar: FC = () => {
   const links: LinkType[] = [
     {
+      name: 'Home',
+      link: '/',
+      className: 'body-text !font-normal',
+    },
+    {
       name: 'About Us',
       link: '/about',
       className: 'body-text text-gradient_blue-purple !font-bold',
