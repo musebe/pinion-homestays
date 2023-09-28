@@ -1,10 +1,9 @@
 import Filters from '@/components/Filters';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
-import RatesSection from '@/components/RatesSection';
 import ResourceCard from '@/components/ResourceCard';
 import SearchForm from '@/components/SearchForm';
-import { getResources, getResourcesPlaylist } from '@/sanity/actions';
+import { getResources } from '@/sanity/actions';
 
 export const revalidate = 100;
 
@@ -13,13 +12,13 @@ interface Props {
 }
 
 const Page = async ({ searchParams }: Props) => {
-   const resources = await getResources({
-     query: searchParams?.query || '',
-     category: searchParams?.category || '',
-     page: '1',
-   });
+  const resources = await getResources({
+    query: searchParams?.query || '',
+    category: searchParams?.category || '',
+    page: '1',
+  });
 
-// console.log(resources);
+  console.log(resources);
 
   return (
     <main className='flex-center paddings mx-auto w-full max-w-screen-2xl flex-col'>
@@ -30,16 +29,15 @@ const Page = async ({ searchParams }: Props) => {
         <SearchForm />
       </section>
       <Filters />
-      {(searchParams?.query || searchParams?.category) && (
-        <section className='flex-center mt-6 w-full flex-col sm:mt-20'>
-          <Header
-            query={searchParams?.query || ''}
-            category={searchParams?.category || ''}
-          />
+      <section className='flex-center mt-6 w-full flex-col sm:mt-20'>
+        <Header
+          query={searchParams?.query || ''}
+          category={searchParams?.category || ''}
+        />
 
-          <div className='mt-12 flex w-full flex-wrap justify-center gap-16 sm:justify-start'>
-            {resources?.length > 0 ? (
-              resources.map((resource: any) => (
+        <div className='mt-12 flex w-full flex-wrap justify-center gap-16 sm:justify-start'>
+          {resources?.length > 0
+            ? resources.map((resource: any) => (
                 <ResourceCard
                   key={resource._id}
                   title={resource.title}
@@ -50,12 +48,13 @@ const Page = async ({ searchParams }: Props) => {
                   downloadLink={resource.downloadLink}
                 />
               ))
-            ) : (
-              <p className='body-regular text-white-400'>No resources found</p>
-            )}
-          </div>
-        </section>
-      )}
+            : (searchParams?.query || searchParams?.category) && (
+                <p className='body-regular text-white-400'>
+                  No Data Found
+                </p>
+              )}
+        </div>
+      </section>
     </main>
   );
 };

@@ -29,7 +29,8 @@ const Header = ({ query, category }: Props) => {
     );
   }
 
-  return <h1 className='heading3 self-start text-white-800'>No Results</h1>;
+  // If no query or category is provided, render nothing
+  return null;
 };
 
 export default Header;
