@@ -6,7 +6,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 
 const links = [
   'all',
-  'living room',
+  'living-room',
   'master-bedroom',
   'dinning-area',
   'parking-area',

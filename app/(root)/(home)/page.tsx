@@ -18,7 +18,7 @@ const Page = async ({ searchParams }: Props) => {
     page: '1',
   });
 
-  console.log(resources);
+  // console.log(resources);
 
   return (
     <main className='flex-center paddings mx-auto w-full max-w-screen-2xl flex-col'>
